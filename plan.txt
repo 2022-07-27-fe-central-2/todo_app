@@ -1,0 +1,24 @@
+for every single page, nav bar/ page routing section
+(buttons -> void)
+
+<home / create-todo / list-todo / in-progress / completed>
+[                                                         ]
+|                                                         |
+|                                                         |
+|                                                         |
+|                                                         |
+|                                                         |
+[                                                         ]
+
+page 1. home page, landing page, text based component -> renders text
+page 2. create todo page, (form of some kind) -> todo
+page 3. list new todos (new)
+page 4. currently working on todos (in-progress)
+page 5. completed todos
+
+{
+  todo-text: string,
+  todo-notes: string,
+  status: 'complete' / 'in-progress' / 'new'
+}
+
