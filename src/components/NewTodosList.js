@@ -1,6 +1,6 @@
 import { NewTodo } from "./NewTodo"
 
-export const ListTodos = () => {
+export const NewTodosList = () => {
 
   const todos = [
     {
@@ -24,7 +24,7 @@ export const ListTodos = () => {
     <>
       {
         todos.map((todo) => (
-          <NewTodo text={todo.text}/>
+          <NewTodo todo={todo}/>
           ))
       }
     </>

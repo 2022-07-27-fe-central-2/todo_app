@@ -1,9 +1,12 @@
-export const NewTodo = ({text}) => {
-
+export const NewTodo = (props) => {
+  const { text, status } = props.todo
   return (
-    <div style={{ height: '10rem', width: '10rem', border: '1px solid red'}}>
+    <div style={{ height: '20rem', width: '20rem', border: '1px solid red'}}>
       <p>
-        {text}
+        status: {status}
+      </p>
+      <p>
+        text: {text}
       </p>
       <button>change to in-progress</button>
     </div>

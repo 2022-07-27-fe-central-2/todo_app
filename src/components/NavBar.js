@@ -1,11 +1,11 @@
 
 export const NavBar = () => {
   return (
-    <div>
+    <div style={{marginTop: '2rem'}}>
       <button>Home</button>
-      <button>Create-Todo</button>
-      <button>List Todos</button>
-      <button>Todos In-Progress</button>
+      <button>Create Todo</button>
+      <button>New Todos</button>
+      <button>In Progress Todos</button>
       <button>Completed Todos</button>
     </div>
   )

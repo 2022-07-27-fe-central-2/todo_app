@@ -2,32 +2,19 @@ import './App.css';
 import { NavBar } from './components/NavBar';
 import { HomePage } from './pages/HomePage';
 import { CreateTodoPage } from './pages/CreateTodoPage';
-import { ListTodoPage } from './pages/ListTodosPage';
+import { NewTodosPage } from './pages/NewTodosPage';
+import { InProgressTodosPage } from './pages/InProgressTodosPage';
+import { CompletedTodosPage } from './pages/CompletedTodosPage';
 
 export const App = () => {
   return (
     <div className="App">
       <NavBar />
-      {/* <HomePage /> */}
+      <HomePage />
       {/* <CreateTodoPage /> */}
-      <ListTodoPage />
+      {/* <NewTodosPage /> */}
+      {/* <InProgressTodosPage /> */}
+      {/* <CompletedTodosPage /> */}
     </div>
   );
 }
-
-
-// {/* <route ='/'>
-//         < home page>
-//       </route>
-//       <route ='/create'>
-//         < create page>
-//       </route>
-//       <route ='/list'>
-//         < list page>
-//       </route>
-//       <route ='/in-progress'>
-//         < in-progress page>
-//       </route>
-//       <route ='/completed'>
-//         < completed page>
-//       </route> */}
