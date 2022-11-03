@@ -1,31 +1,21 @@
+import { useEffect, useState } from "react"
 import { NewTodo } from "./NewTodo"
 
-export const NewTodosList = () => {
+export const NewTodosList = (props) => {
 
-  const todos = [
-    {
-      text: 'take out trash',
-      notes: '',
-      status: 'new'
-    },
-    {
-      text: 'eat pineapples',
-      notes: '',
-      status: 'new'
-    },
-    {
-      text: 'study programming',
-      notes: '',
-      status: 'new'
-    }
-  ]
+  const [todos, setTodos] = useState([])
+
+  useEffect(() => {
+    setTodos(props.newTodos)
+  },[props.newTodos])
+
 
   return (
     <>
       {
-        todos.map((todo) => (
-          <NewTodo todo={todo}/>
-          ))
+        todos.map((todo, i) => (
+          <NewTodo key={i} todo={todo}/>
+        ))
       }
     </>
   )

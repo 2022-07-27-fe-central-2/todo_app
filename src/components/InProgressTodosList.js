@@ -23,8 +23,8 @@ export const InProgressTodosList = () => {
   return (
     <>
       {
-        todos.map((todo) => (
-          <InProgressTodo todo={todo}/>
+        todos.map((todo, i) => (
+          <InProgressTodo key={i} todo={todo}/>
           ))
       }
     </>

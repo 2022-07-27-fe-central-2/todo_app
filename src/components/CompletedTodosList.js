@@ -23,8 +23,8 @@ export const CompletedTodosList = () => {
   return (
     <>
       {
-        todos.map((todo) => (
-          <CompletedTodo todo={todo} />
+        todos.map((todo, i) => (
+          <CompletedTodo key={i} todo={todo} />
         ))
       }
     </>
