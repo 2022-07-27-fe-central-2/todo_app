@@ -1,30 +1,19 @@
+import { useEffect, useState } from "react"
 import { InProgressTodo } from "./InProgressTodo"
 
-export const InProgressTodosList = () => {
+export const InProgressTodosList = (props) => {
 
-  const todos = [
-    {
-      text: 'take out trash',
-      notes: 'lots of trash today',
-      status: 'in-progress'
-    },
-    {
-      text: 'eat pineapples',
-      notes: 'pineapples, pineapples, pineapples',
-      status: 'in-progress'
-    },
-    {
-      text: 'study programming',
-      notes: 'aka coding',
-      status: 'in-progress'
-    }
-  ]
+  const [inProgressTodos, setInProgressTodos] = useState([])
+
+  useEffect(() => {
+    setInProgressTodos(props.todos.inProgressTodos)
+  }, [props.todos.inProgressTodos])
 
   return (
     <>
       {
-        todos.map((todo, i) => (
-          <InProgressTodo key={i} todo={todo}/>
+        inProgressTodos.map((inProgressTodo, i) => (
+          <InProgressTodo key={i} inProgressTodo={inProgressTodo} todos={props.todos} setTodos={props.setTodos} />
           ))
       }
     </>

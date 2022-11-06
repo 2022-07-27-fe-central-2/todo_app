@@ -3,18 +3,17 @@ import { NewTodo } from "./NewTodo"
 
 export const NewTodosList = (props) => {
 
-  const [todos, setTodos] = useState([])
+  const [newTodos, setNewTodos] = useState([])
 
   useEffect(() => {
-    setTodos(props.newTodos)
-  },[props.newTodos])
-
+    setNewTodos(props.todos.newTodos)
+  }, [props.todos.newTodos])
 
   return (
     <>
       {
-        todos.map((todo, i) => (
-          <NewTodo key={i} todo={todo}/>
+        newTodos.map((newTodo, i) => (
+          <NewTodo key={i} newTodo={newTodo} todos={props.todos} setTodos={props.setTodos} />
         ))
       }
     </>

@@ -4,7 +4,7 @@ export const NewTodosPage = (props) => {
   return (
     <div>
       <h2>New Todos Page</h2>
-      <NewTodosList newTodos={props.newTodos}/>
+      <NewTodosList todos={props.todos} setTodos={props.setTodos} />
     </div>
   )
 }

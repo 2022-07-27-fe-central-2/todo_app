@@ -1,30 +1,19 @@
+import { useEffect, useState } from "react"
 import { CompletedTodo } from "./CompletedTodo"
 
-export const CompletedTodosList = () => {
+export const CompletedTodosList = (props) => {
 
-  const todos = [
-    {
-      text: 'take out trash',
-      notes: 'lots of trash today',
-      status: 'complete'
-    },
-    {
-      text: 'eat pineapples',
-      notes: 'pineapples, pineapples, pineapples',
-      status: 'complete'
-    },
-    {
-      text: 'study programming',
-      notes: 'aka coding',
-      status: 'complete'
-    }
-  ]
+  const [completedTodos, setCompletedTodos] = useState([])
+
+  useEffect(() => {
+    setCompletedTodos(props.todos.completedTodos)
+  }, [props.todos.completedTodos])
 
   return (
     <>
       {
-        todos.map((todo, i) => (
-          <CompletedTodo key={i} todo={todo} />
+        completedTodos.map((completedTodo, i) => (
+          <CompletedTodo key={i} completedTodo={completedTodo} todos={props.todos} setTodos={props.setTodos} />
         ))
       }
     </>

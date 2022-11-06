@@ -1,28 +1,30 @@
 import {useState} from 'react';
 
 export const CreateTodoForm = (props) => {
-  const { newTodos, setNewTodos } = props
+  const { todos, setTodos } = props
   const [todoText, setTodoText] = useState('')
-
-  const onInputChange = (e) => {
-    // console.log(e.target.value)
-    setTodoText(e.target.value)
-  }
 
   const submitNewTodo = (e) => {
     e.preventDefault()
     const newTodo = {
+      id: Math.random(),
       text: todoText,
       notes: '',
       status: 'new'
     }
-    setNewTodos([...newTodos, newTodo])
+    setTodos({
+      ...todos,
+      newTodos: [...todos.newTodos, newTodo]
+    })
+    setTodoText('')
   }
+
   return (
     <form>
       <input
         placeholder="Todo Task..."
-        onChange={onInputChange}
+        onChange={(e) => setTodoText(e.target.value)}
+        value={todoText}
       />
       <button onClick={submitNewTodo}>submit</button>
     </form>

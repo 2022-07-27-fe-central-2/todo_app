@@ -5,7 +5,7 @@ export const CreateTodoPage = (props) => {
   return (
     <div>
       <h2>Create Todo Page</h2>
-      <CreateTodoForm newTodos={props.newTodos} setNewTodos={props.setNewTodos}/>
+      <CreateTodoForm todos={props.todos} setTodos={props.setTodos}/>
     </div>
   )
 }

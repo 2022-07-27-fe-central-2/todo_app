@@ -5,18 +5,16 @@ import { CreateTodoPage } from './pages/CreateTodoPage';
 import { NewTodosPage } from './pages/NewTodosPage';
 import { InProgressTodosPage } from './pages/InProgressTodosPage';
 import { CompletedTodosPage } from './pages/CompletedTodosPage';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 export const App = () => {
   const [route, setRoute] = useState('home')
 
-  const [newTodos, setNewTodos] = useState([])
-  const [inProgressTodos, setInProgressTodos] = useState([])
-  const [completedTodos, setCompletedTodos] = useState([])
-
-  useEffect(() => {
-
-  }, [])
+  const [todos, setTodos] = useState({
+    newTodos: [],
+    inProgressTodos: [],
+    completedTodos: []
+  })
 
   return (
     <div className="App">
@@ -27,19 +25,19 @@ export const App = () => {
       }
       {
         route === 'create' &&
-        <CreateTodoPage newTodos={newTodos} setNewTodos={setNewTodos}/>
+        <CreateTodoPage todos={todos} setTodos={setTodos} />
       }
       {
         route === 'new' &&
-        <NewTodosPage newTodos={newTodos}/>
+        <NewTodosPage todos={todos} setTodos={setTodos} />
       }
       {
         route === 'inprogress' &&
-        <InProgressTodosPage />
+        <InProgressTodosPage todos={todos} setTodos={setTodos} />
       }
       {
         route === 'completed' &&
-        <CompletedTodosPage />
+        <CompletedTodosPage todos={todos} setTodos={setTodos} />
       }
     </div>
   );
