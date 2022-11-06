@@ -22,3 +22,26 @@ page 5. completed todos
   status: 'complete' / 'in-progress' / 'new'
 }
 
+1. inside app component:
+we are going to have route (state)
+using the nav buttons we are going to change the route state
+
+2.
+create 3 different types of todos in the app component, which we will update accordingly
+
+3.
+work inside the create todo page -> create todo form
+create a todoText state so that every time input is change state gets updated
+when onClick is clicked it will submit a newTodo **
+we create a temp object
+{
+  text: string = todoText state inside the create todo form
+  notes: string = ''
+  status string = 'new'
+  // when status is changed other possibilities: 'in-progress', 'completed'
+}
+
+// TODO **
+// change the todos to be in one todolist, and at the top, filter and divide
+// via the status, that way, we do not need to manually grab the currently editing todo
+// and move them into different (buckets): todo_status lists(i.e: newTodos, inProgressTodos, and completedTodos)

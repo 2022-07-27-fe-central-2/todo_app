@@ -1,17 +1,26 @@
 export const CompletedTodo = (props) => {
-  const { text, notes, status } = props.todo
+
+  const onDeleteTodo = (e) => {
+    e.preventDefault()
+    const completedTodos = props.todos.completedTodos.filter((completedTodo) => completedTodo.id !== props.completedTodo.id)
+    props.setTodos({
+      ...props.todos,
+      completedTodos
+    })
+  }
+
   return (
     <div style={{ height: '20rem', width: '20rem', border: '1px solid red'}}>
       <p>
-        status: {status}
+        status: {props.completedTodo.status}
       </p>
       <p>
-        text: {text}
+        text: {props.completedTodo.text}
       </p>
       <p>
-        notes: {notes}
+        notes: {props.completedTodo.notes}
       </p>
-      <button>Completely delete Todo</button>
+      <button onClick={onDeleteTodo}>Completely delete Todo</button>
     </div>
   )
 }

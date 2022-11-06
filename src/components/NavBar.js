@@ -1,12 +1,14 @@
 
-export const NavBar = () => {
+export const NavBar = (props) => {
+  const { setRoute } = props
+
   return (
     <div style={{marginTop: '2rem'}}>
-      <button>Home</button>
-      <button>Create Todo</button>
-      <button>New Todos</button>
-      <button>In Progress Todos</button>
-      <button>Completed Todos</button>
+      <button onClick={() => setRoute('home')}>Home</button>
+      <button onClick={() => setRoute('create')}>Create Todo</button>
+      <button onClick={() => setRoute('new')}>New Todos</button>
+      <button onClick={() => setRoute('inprogress')}>In Progress Todos</button>
+      <button onClick={() => setRoute('completed')}>Completed Todos</button>
     </div>
   )
 }

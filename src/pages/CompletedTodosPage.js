@@ -1,10 +1,10 @@
 import { CompletedTodosList } from "../components/CompletedTodosList"
 
-export const CompletedTodosPage = () => {
+export const CompletedTodosPage = (props) => {
   return (
     <div>
       <h2>Completed Todos Page</h2>
-      <CompletedTodosList />
+      <CompletedTodosList todos={props.todos} setTodos={props.setTodos} />
     </div>
   )
 }
