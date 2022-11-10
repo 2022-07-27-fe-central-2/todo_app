@@ -6,8 +6,8 @@ export const NewTodosList = (props) => {
   const [newTodos, setNewTodos] = useState([])
 
   useEffect(() => {
-    setNewTodos(props.todos.newTodos)
-  }, [props.todos.newTodos])
+    setNewTodos(props.newTodos)
+  }, [props.newTodos])
 
   return (
     <>

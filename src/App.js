@@ -5,9 +5,10 @@ import { CreateTodoPage } from './pages/CreateTodoPage';
 import { NewTodosPage } from './pages/NewTodosPage';
 import { InProgressTodosPage } from './pages/InProgressTodosPage';
 import { CompletedTodosPage } from './pages/CompletedTodosPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export const App = () => {
+
   const [route, setRoute] = useState('home')
 
   const [todos, setTodos] = useState({
@@ -15,6 +16,14 @@ export const App = () => {
     inProgressTodos: [],
     completedTodos: []
   })
+
+  // useEffect(() => {
+    // (async () => {
+    //   const res = await fetch(mockapiURL)
+    //   const dataArray = await res.json();
+    //   console.log(dataArray)
+    // })()
+  // }, [])
 
   return (
     <div className="App">
