@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { updateTodo } from "../utils/fetch_api_funcs"
 
 export const InProgressTodo = (props) => {
+
   const [notesText, setNotesText] = useState('')
 
   useEffect(() => {

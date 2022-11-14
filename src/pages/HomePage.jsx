@@ -1,5 +1,6 @@
 
 export const HomePage = () => {
+
   return (
     <div style={{marginTop: '10rem'}}>
       <h1>

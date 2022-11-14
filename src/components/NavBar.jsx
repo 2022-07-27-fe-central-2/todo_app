@@ -1,5 +1,6 @@
 
 export const NavBar = (props) => {
+
   const { setRoute } = props
 
   return (
