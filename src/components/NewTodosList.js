@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react"
+import { updateTodo } from "../utils/fetch_api_funcs"
 import { NewTodo } from "./NewTodo"
 
 export const NewTodosList = (props) => {
 
-  const [newTodos, setNewTodos] = useState([])
-
-  useEffect(() => {
-    setNewTodos(props.todos.newTodos)
-  }, [props.todos.newTodos])
+  const onChangeToInProgress = (changingTodo) => {
+    const newTodos = props.newTodos.filter((newTodo) => newTodo.id !== changingTodo.id)
+    props.setNewTodos(newTodos)
+    updateTodo({...changingTodo, status: 'inProgress'})
+  }
 
   return (
     <>
       {
-        newTodos.map((newTodo, i) => (
-          <NewTodo key={i} newTodo={newTodo} todos={props.todos} setTodos={props.setTodos} />
+        props.newTodos.map((newTodo, i) => (
+          <NewTodo key={i} newTodo={newTodo} onChangeToInProgress={onChangeToInProgress} />
         ))
       }
     </>

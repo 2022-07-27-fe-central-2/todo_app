@@ -1,11 +1,11 @@
 import { CreateTodoForm } from "../components/CreateTodoForm"
 
-export const CreateTodoPage = (props) => {
+export const CreateTodoPage = () => {
 
   return (
     <div>
       <h2>Create Todo Page</h2>
-      <CreateTodoForm todos={props.todos} setTodos={props.setTodos}/>
+      <CreateTodoForm />
     </div>
   )
 }

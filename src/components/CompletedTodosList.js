@@ -1,19 +1,19 @@
-import { useEffect, useState } from "react"
+import { deleteTodo } from "../utils/fetch_api_funcs"
 import { CompletedTodo } from "./CompletedTodo"
 
 export const CompletedTodosList = (props) => {
 
-  const [completedTodos, setCompletedTodos] = useState([])
-
-  useEffect(() => {
-    setCompletedTodos(props.todos.completedTodos)
-  }, [props.todos.completedTodos])
+  const onDeleteTodo = (completedTodoId) => {
+    const completedTodos = props.completedTodos.filter((completedTodo) => completedTodo.id !== completedTodoId)
+    props.setCompletedTodos(completedTodos)
+    deleteTodo(completedTodoId)
+  }
 
   return (
     <>
       {
-        completedTodos.map((completedTodo, i) => (
-          <CompletedTodo key={i} completedTodo={completedTodo} todos={props.todos} setTodos={props.setTodos} />
+        props.completedTodos.map((completedTodo, i) => (
+          <CompletedTodo key={i} completedTodo={completedTodo} onDeleteTodo={onDeleteTodo} />
         ))
       }
     </>

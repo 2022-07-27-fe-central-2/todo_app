@@ -1,35 +1,16 @@
 import { useEffect, useState } from "react"
+import { updateTodo } from "../utils/fetch_api_funcs"
 
 export const InProgressTodo = (props) => {
   const [notesText, setNotesText] = useState('')
-
-  const onUpdateNotes = (e) => {
-    e.preventDefault()
-    const updatingTodo = {...props.inProgressTodo, notes: notesText }
-    const inProgressTodos = props.todos.inProgressTodos.map(
-      (inProgressTodo) => inProgressTodo.id === updatingTodo.id
-      ? updatingTodo
-      : inProgressTodo
-    )
-    props.setTodos({
-      ...props.todos,
-      inProgressTodos
-    })
-  }
 
   useEffect(() => {
     setNotesText(props.inProgressTodo.notes)
   }, [props.inProgressTodo.notes])
 
-  const onChangeToComplete = (e) => {
+  const updateNotes = (e) => {
     e.preventDefault()
-    const changingTodo = {...props.inProgressTodo, status: 'complete'}
-    const inProgressTodos = props.todos.inProgressTodos.filter((inProgressTodo) => inProgressTodo.id !== changingTodo.id)
-    props.setTodos({
-      ...props.todos,
-      inProgressTodos,
-      completedTodos: [...props.todos.completedTodos, changingTodo]
-    })
+    updateTodo({...props.inProgressTodo, notes: notesText})
   }
 
   return (
@@ -50,9 +31,9 @@ export const InProgressTodo = (props) => {
           onChange={(e) => setNotesText(e.target.value)}
           value={notesText}
         />
-        <button onClick={onUpdateNotes}>Update Notes</button>
+        <button onClick={updateNotes}>Update Notes</button>
       </form>
-      <button onClick={onChangeToComplete}>change to complete</button>
+      <button onClick={()=> props.onChangeToComplete(props.inProgressTodo)}>change to complete</button>
     </div>
   )
 }
