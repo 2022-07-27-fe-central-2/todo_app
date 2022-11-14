@@ -7,16 +7,10 @@ export const CreateTodoForm = (props) => {
 
   const submitNewTodo = (e) => {
     e.preventDefault()
-    // const newTodo = {
-    //   id: Math.random(),
-    //   text: todoText,
-    //   notes: '',
-    //   status: 'new'
-    // }
     const newTodo = {
       text: todoText,
       notes: '',
-      status: 'newTodo'
+      status: 'new'
     }
     createNewTodo(newTodo);
     setTodos({

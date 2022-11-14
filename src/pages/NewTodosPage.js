@@ -5,13 +5,15 @@ import { getAllTodosByStatus } from '../utils/fetch_api_funcs';
 export const NewTodosPage = () => {
 
   const [newTodos, setNewTodos] = useState([])
+
   useEffect(() => {
-    getAllTodosByStatus(setNewTodos, 'newTodo')
+    getAllTodosByStatus(setNewTodos, 'new')
   },[])
+
   return (
     <div>
       <h2>New Todos Page</h2>
-      <NewTodosList newTodos={newTodos}/>
+      <NewTodosList newTodos={newTodos} setNewTodos={setNewTodos} />
     </div>
   )
 }
