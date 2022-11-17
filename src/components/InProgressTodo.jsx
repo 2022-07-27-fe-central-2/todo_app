@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Button, Card, Form } from "react-bootstrap"
 import { updateTodo } from "../utils/fetch_api_funcs"
 
 export const InProgressTodo = (props) => {
@@ -15,26 +16,27 @@ export const InProgressTodo = (props) => {
   }
 
   return (
-    <div style={{ height: '20rem', width: '20rem', border: '1px solid red'}}>
-      <p>
-        status: {props.inProgressTodo.status}
-      </p>
-      <p>
-        text: {props.inProgressTodo.text}
-      </p>
-      <form>
-        <label htmlFor='notesTextArea'>
-          notes:{' '}
-        </label>
-        <textarea
-          name='notesTextArea'
+    <Card>
+      <Card.Header>
+        <Card.Title>Todo: {props.inProgressTodo.text}</Card.Title>
+        <Card.Subtitle>Status: {props.inProgressTodo.status}</Card.Subtitle>
+      </Card.Header>
+      <Card.Body>
+        <Form>
+          <Form.Label>Notes: {' '}</Form.Label>
+          <Form.Control
+          type='text'
+          as='textarea'
           placeholder='Notes for task...'
           onChange={(e) => setNotesText(e.target.value)}
           value={notesText}
-        />
-        <button onClick={updateNotes}>Update Notes</button>
-      </form>
-      <button onClick={()=> props.onChangeToComplete(props.inProgressTodo)}>change to complete</button>
-    </div>
+          />
+          <Button onClick={updateNotes}>Update Notes</Button>
+        </Form>
+      </Card.Body>
+      <Card.Footer>
+        <Button onClick={()=> props.onChangeToComplete(props.inProgressTodo)}>Change To Complete</Button>
+      </Card.Footer>
+    </Card>
   )
 }
