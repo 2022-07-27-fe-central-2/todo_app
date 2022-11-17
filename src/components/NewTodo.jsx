@@ -1,14 +1,16 @@
+import { Button, Card } from "react-bootstrap"
+
 export const NewTodo = (props) => {
 
   return (
-    <div style={{ height: '20rem', width: '20rem', border: '1px solid red'}}>
-      <p>
-        status: {props.newTodo.status}
-      </p>
-      <p>
-        text: {props.newTodo.text}
-      </p>
-      <button onClick={() => props.onChangeToInProgress(props.newTodo)}>change to in-progress</button>
-    </div>
+    <Card border='primary' style={{margin: 8}}>
+      <Card.Header>
+        <Card.Title>Todo: {props.newTodo.text}</Card.Title>
+        <Card.Subtitle>Status: {props.newTodo.status}</Card.Subtitle>
+      </Card.Header>
+      <Card.Footer>
+        <Button onClick={() => props.onChangeToInProgress(props.newTodo)}>Change to InProgress</Button>
+      </Card.Footer>
+    </Card>
   )
 }

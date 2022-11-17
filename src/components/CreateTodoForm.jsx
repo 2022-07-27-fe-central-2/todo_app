@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { createNewTodo } from '../utils/fetch_api_funcs';
 
 export const CreateTodoForm = () => {
@@ -17,13 +18,15 @@ export const CreateTodoForm = () => {
   }
 
   return (
-    <form>
-      <input
-        placeholder="Todo Task..."
+    <Form style={{display: 'flex'}}>
+      <Form.Control
+        type='text'
+        size='sm'
         onChange={(e) => setTodoText(e.target.value)}
+        placeholder='Todo task...'
         value={todoText}
       />
-      <button onClick={submitNewTodo}>submit</button>
-    </form>
+      <Button onClick={submitNewTodo}>Submit</Button>
+    </Form>
   )
 }

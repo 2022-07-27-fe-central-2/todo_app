@@ -1,17 +1,19 @@
+import { Button, Card } from "react-bootstrap"
+
 export const CompletedTodo = (props) => {
 
   return (
-    <div style={{ height: '20rem', width: '20rem', border: '1px solid red'}}>
-      <p>
-        status: {props.completedTodo.status}
-      </p>
-      <p>
-        text: {props.completedTodo.text}
-      </p>
-      <p>
-        notes: {props.completedTodo.notes}
-      </p>
-      <button onClick={() => props.onDeleteTodo(props.completedTodo.id)}>Completely delete Todo</button>
-    </div>
+    <Card border='primary' style={{margin: 8}}>
+      <Card.Header>
+        <Card.Title>Todo: {props.completedTodo.text}</Card.Title>
+        <Card.Subtitle>Status: {props.completedTodo.status}</Card.Subtitle>
+      </Card.Header>
+      <Card.Body>
+        <Card.Text>Notes: {props.completedTodo.notes}</Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <Button onClick={() => props.onDeleteTodo(props.completedTodo.id)}>Delete Todo</Button>
+      </Card.Footer>
+    </Card>
   )
 }
