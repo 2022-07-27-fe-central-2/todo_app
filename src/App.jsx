@@ -6,8 +6,16 @@ import { NewTodosPage } from './pages/NewTodosPage';
 import { InProgressTodosPage } from './pages/InProgressTodosPage';
 import { CompletedTodosPage } from './pages/CompletedTodosPage';
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { fetchTodos } from './store/todoSlice';
 
 export const App = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchTodos())
+  }, [dispatch])
 
   // const [route, setRoute] = useState('home')
 

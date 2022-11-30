@@ -1,6 +1,13 @@
 import { Button, Card } from "react-bootstrap"
+import { useDispatch } from 'react-redux'
+import { removeTodo } from "../store/todoSlice"
 
 export const CompletedTodo = (props) => {
+  const dispatch = useDispatch()
+
+  const onDeleteTodo = (completedTodoId) => {
+    dispatch(removeTodo(completedTodoId))
+  }
 
   return (
     <Card border='primary' style={{margin: 8}}>
@@ -12,7 +19,8 @@ export const CompletedTodo = (props) => {
         <Card.Text>Notes: {props.completedTodo.notes}</Card.Text>
       </Card.Body>
       <Card.Footer>
-        <Button onClick={() => props.onDeleteTodo(props.completedTodo.id)}>Delete Todo</Button>
+        {/* <Button onClick={() => props.onDeleteTodo(props.completedTodo.id)}>Delete Todo</Button> */}
+        <Button onClick={() => onDeleteTodo(props.completedTodo.id)}>Delete Todo</Button>
       </Card.Footer>
     </Card>
   )
