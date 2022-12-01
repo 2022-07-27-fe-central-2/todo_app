@@ -1,18 +1,15 @@
 const mockapiURL = process.env.REACT_APP_MOCK_API_URL
 
-// TODO: handle functionality of good and bad responses on the fetch calls
 
-// setTodos: setter to set the component state with an array of todos
-// status: is string 'newTodo' || 'in-progress' || 'completed'
-export const getAllTodosByStatus = async (setTodos, status) => {
+export const getAllTodos = async () => {
   const res = await fetch(mockapiURL)
   if (res.status === 200) {
     const dataArray = await res.json()
-    const filteredArray = dataArray.filter((todo) => todo.status === status)
-    setTodos(filteredArray)
+    return dataArray
   }
   else {
     console.log(res.statusText)
+    return []
   }
 }
 
@@ -23,10 +20,12 @@ export const createNewTodo = async (todoBody) => {
     body: JSON.stringify(todoBody)
   })
   if (res.status === 201) {
-    return
+    const todos = await getAllTodos()
+    return todos
   }
   else {
     console.log(res.statusText)
+    return []
   }
 }
 
@@ -37,10 +36,12 @@ export const updateTodo = async (todo) => {
     body: JSON.stringify(todo)
   })
   if (res.status === 200) {
-    return
+    const todos = await getAllTodos()
+    return todos
   }
   else {
     console.log(res.statusText)
+    return []
   }
 }
 
@@ -49,9 +50,11 @@ export const deleteTodo = async (todoId) => {
     method: 'DELETE'
   })
   if (res.status === 200) {
-    return
+    const todos = await getAllTodos()
+    return todos
   }
   else {
     console.log(res.statusText)
+    return []
   }
 }

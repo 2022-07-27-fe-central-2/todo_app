@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react';
 import { NewTodosList } from '../components/NewTodosList';
-import { getAllTodosByStatus } from '../utils/fetch_api_funcs';
+import { useSelector } from 'react-redux';
 
 export const NewTodosPage = () => {
 
-  const [newTodos, setNewTodos] = useState([])
-
-  useEffect(() => {
-    getAllTodosByStatus(setNewTodos, 'new')
-  },[])
+  const newTodos = useSelector((state) => state.todos.todos.filter(todo => todo.status === 'new'))
 
   return (
     <div>
       <h2>New Todos Page</h2>
-      <NewTodosList newTodos={newTodos} setNewTodos={setNewTodos} />
+      <NewTodosList newTodos={newTodos}/>
     </div>
   )
 }

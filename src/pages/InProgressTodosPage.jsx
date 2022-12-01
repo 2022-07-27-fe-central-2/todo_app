@@ -1,19 +1,14 @@
-import { useEffect, useState } from "react"
+import { useSelector } from "react-redux"
 import { InProgressTodosList } from "../components/InProgressTodosList"
-import { getAllTodosByStatus } from "../utils/fetch_api_funcs"
 
 export const InProgressTodosPage = () => {
 
-  const [inProgressTodos, setInProgressTodos] = useState([])
-
-  useEffect(() => {
-    getAllTodosByStatus(setInProgressTodos, 'inProgress')
-  }, [])
+  const inProgressTodos = useSelector((state) => state.todos.todos.filter(todo => todo.status === 'inProgress'))
 
   return (
     <div>
       <h2>In Progress Todos Page</h2>
-      <InProgressTodosList inProgressTodos={inProgressTodos} setInProgressTodos={setInProgressTodos} />
+      <InProgressTodosList inProgressTodos={inProgressTodos} />
     </div>
   )
 }

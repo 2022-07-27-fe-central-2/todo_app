@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react"
 import { Button, Card, Form } from "react-bootstrap"
-import { updateTodo } from "../utils/fetch_api_funcs"
+import { useDispatch } from "react-redux"
+import { editTodo } from "../store/todosSlice"
 
 export const InProgressTodo = (props) => {
+  const dispatch = useDispatch()
 
   const [notesText, setNotesText] = useState('')
 
@@ -12,7 +14,11 @@ export const InProgressTodo = (props) => {
 
   const updateNotes = (e) => {
     e.preventDefault()
-    updateTodo({...props.inProgressTodo, notes: notesText})
+    dispatch(editTodo({...props.inProgressTodo, notes: notesText}))
+  }
+
+  const onChangeToComplete = (changingTodo) => {
+    dispatch(editTodo({...changingTodo, status: 'complete'}))
   }
 
   return (
@@ -25,17 +31,18 @@ export const InProgressTodo = (props) => {
         <Form>
           <Form.Label>Notes: {' '}</Form.Label>
           <Form.Control
-          type='text'
-          as='textarea'
-          placeholder='Notes for task...'
-          onChange={(e) => setNotesText(e.target.value)}
-          value={notesText}
+            type='text'
+            as='textarea'
+            placeholder='Notes for task...'
+            onChange={(e) => setNotesText(e.target.value)}
+            value={notesText}
+            style={{marginBottom: 8}}
           />
           <Button onClick={updateNotes}>Update Notes</Button>
         </Form>
       </Card.Body>
       <Card.Footer>
-        <Button onClick={()=> props.onChangeToComplete(props.inProgressTodo)}>Change To Complete</Button>
+        <Button onClick={()=> onChangeToComplete(props.inProgressTodo)}>Change To Complete</Button>
       </Card.Footer>
     </Card>
   )

@@ -1,8 +1,11 @@
 import {useState} from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { createNewTodo } from '../utils/fetch_api_funcs';
+import { useDispatch } from 'react-redux';
+import { addTodo } from '../store/todosSlice';
 
 export const CreateTodoForm = () => {
+
+  const dispatch = useDispatch()
 
   const [todoText, setTodoText] = useState('')
 
@@ -13,7 +16,7 @@ export const CreateTodoForm = () => {
       notes: '',
       status: 'new'
     }
-    createNewTodo(newTodo);
+    dispatch(addTodo(newTodo))
     setTodoText('')
   }
 
